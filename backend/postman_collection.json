@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "ee234370-6d77-46ac-8171-f997c9d80e6b",
+		"name": "Amber",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/profiles/read?phonenumber=1234567890",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"profiles",
+								"read"
+							],
+							"query": [
+								{
+									"key": "phonenumber",
+									"value": "1234567890"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/profiles/create?firstname=John&lastname=Doe&password=Passw0rd!&birthdate=1990-01-01&phonenumber=1234567890",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"profiles",
+								"create"
+							],
+							"query": [
+								{
+									"key": "firstname",
+									"value": "John"
+								},
+								{
+									"key": "lastname",
+									"value": "Doe"
+								},
+								{
+									"key": "password",
+									"value": "Passw0rd!"
+								},
+								{
+									"key": "birthdate",
+									"value": "1990-01-01"
+								},
+								{
+									"key": "phonenumber",
+									"value": "1234567890"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/profiles/delete?phonenumber=1234567890",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"profiles",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "phonenumber",
+									"value": "1234567890"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/profiles/update?phonenumber=1234567890&firstname=Jane&lastname=Smith&birthdate=1990-02-02",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"profiles",
+								"update"
+							],
+							"query": [
+								{
+									"key": "phonenumber",
+									"value": "1234567890"
+								},
+								{
+									"key": "firstname",
+									"value": "Jane"
+								},
+								{
+									"key": "lastname",
+									"value": "Smith"
+								},
+								{
+									"key": "birthdate",
+									"value": "1990-02-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"profile\": \"5f8d6e3a7a0e2c0012345678\",\r\n  \"title\": \"Example Product 2\",\r\n  \"description\": \"This is an example product.\",\r\n  \"category\": [\"Electronics\"],\r\n  \"price\": 9.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/products/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/products/read?profileId=5f8d6e3a7a0e2c0012345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"products",
+								"read"
+							],
+							"query": [
+								{
+									"key": "profileId",
+									"value": "5f8d6e3a7a0e2c0012345678"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/products/read/all?page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"products",
+								"read",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/products/read/by-category?category=Electronics&page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"products",
+								"read",
+								"by-category"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Electronics"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/products/delete?productId=643c6de1e60cd11751756671",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"products",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "643c6de1e60cd11751756671"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/products/update?productId=<productId>&profile=<profile>&title=<title>&description=<description>&category=<category>&price=<price>",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"products",
+								"update"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "<productId>"
+								},
+								{
+									"key": "profile",
+									"value": "<profile>"
+								},
+								{
+									"key": "title",
+									"value": "<title>"
+								},
+								{
+									"key": "description",
+									"value": "<description>"
+								},
+								{
+									"key": "category",
+									"value": "<category>"
+								},
+								{
+									"key": "price",
+									"value": "<price>"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

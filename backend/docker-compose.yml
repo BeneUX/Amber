@@ -1,0 +1,65 @@
+volumes:
+  mongodb_data:
+
+
+services:
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db:rw
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+  template-service:
+    build:
+      context: template
+    ports:
+      - "8081:8081"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_DATABASE=profiles
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    depends_on:
+      - mongodb
+
+  profile-service:
+    build:
+      context: profile
+    ports:
+      - "8082:8082"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_DATABASE=profiles
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    depends_on:
+      - mongodb
+
+  product-service:
+    build:
+      context: product
+    ports:
+      - "8083:8083"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_DATABASE=products
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    depends_on:
+      - mongodb
+
+
+  market-service:
+    build:
+      context: market
+    ports:
+      - "8084:8084"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_DATABASE=market
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    depends_on:
+      - mongodb

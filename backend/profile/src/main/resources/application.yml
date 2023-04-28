@@ -1,0 +1,24 @@
+server:
+    port: '8082'
+
+spring:
+  application:
+    name: profile
+  data:
+    mongodb:
+      host: ${MONGODB_HOST}
+      port: '27017'
+      database: ${MONGODB_DATABASE}
+      authentication-database: admin
+      username: ${MONGO_INITDB_ROOT_USERNAME}
+      password: ${MONGO_INITDB_ROOT_PASSWORD}
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
